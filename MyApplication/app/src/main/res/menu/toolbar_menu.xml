@@ -5,6 +5,7 @@
     <item android:id="@+id/bw"
         android:title="Progress"
         android:icon="@drawable/ic_trending_up_black_24dp"
+
         app:showAsAction="always"
 
         />
