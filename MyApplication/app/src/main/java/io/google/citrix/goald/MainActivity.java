@@ -10,9 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.facebook.FacebookSdk;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.facebook.appevents.AppEventsLogger;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,7 +25,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
         bottomNavigationBar= (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.ic_sort_black_24dp, "Leaderboard"))
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTabReselected(int position) {
+                if(position < 2){
+                    Intent intent = new Intent(MainActivity.this, FacebookSignIn.class);
+                    startActivity(intent);
+                }
             }
         });
         bottomNavigationBar
