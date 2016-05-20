@@ -6,26 +6,48 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar bottomtoolbar;
+
+    BottomNavigationBar bottomNavigationBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        bottomtoolbar=(Toolbar)findViewById(R.id.bottom_toolbar);
-        bottomtoolbar.inflateMenu(R.menu.toolbar_menu);
+        bottomNavigationBar= (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_sort_black_24dp, "Leaderboard"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_trending_up_black_24dp, "Progress"))
+                .addItem(new BottomNavigationItem(R.drawable.pic06, "Make a Contract"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_supervisor_account_black_24dp, "My Friends"))
+                .initialise();
+        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+            }
+        });
+        bottomNavigationBar
+                .setMode(BottomNavigationBar.MODE_FIXED);
+        bottomNavigationBar
+                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -33,22 +55,16 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(this,CreateGoal.class);
+                Intent intent = new Intent(getApplicationContext(), CreateGoal.class) ;
+                startActivity(intent);
+
+
 
                 /**
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show(); */
             }
         });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
