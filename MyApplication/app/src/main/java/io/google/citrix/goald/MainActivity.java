@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         AppEventsLogger.activateApp(this);
         bottomNavigationBar= (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar
+                .setActiveColor(R.color.colorPrimary)
                 .addItem(new BottomNavigationItem(R.drawable.ic_sort_black_24dp, "Leaderboard"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_trending_up_black_24dp, "Progress"))
                 .addItem(new BottomNavigationItem(R.drawable.pic06, "Make a Contract"))
@@ -103,11 +104,14 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
