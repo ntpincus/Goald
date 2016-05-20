@@ -17,16 +17,18 @@
         android:text="Hello World!"
         android:id="@+id/textView4" />
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
 
-        android:background="@color/colorPrimary"
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#00bcd4"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="0dp"
+
         android:layout_alignParentBottom="true"
-        android:id="@+id/bottom_toolbar">
-
-    </android.support.v7.widget.Toolbar>
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
 
     '
     <!--
