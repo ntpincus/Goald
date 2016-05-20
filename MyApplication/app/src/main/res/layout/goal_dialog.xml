@@ -2,13 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp">
+    android:textAlignment="center"
+
+    android:background="@drawable/bg_selector">
+
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter a Goal"
         android:id="@+id/Goal_title"
+        android:textAlignment="center"
         android:textSize="24sp" />
 
     <EditText
